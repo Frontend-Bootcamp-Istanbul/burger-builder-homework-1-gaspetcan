@@ -144,7 +144,7 @@
 }
 
 .BuildControl {
-  display: inline-flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 5px 0;
@@ -199,4 +199,22 @@
 .BuildControl .More:hover,.BuildControl .More:active {
   background-color: #99703F;
   color: white;
+}
+
+.BuildControl .Less.disabled {
+  cursor: not-allowed;
+  background: #bfc5b7;
+}
+
+.payments{
+  font-size : 24px;
+  font-weight: 600;
+  text-align:center;
+}
+
+.itemList {
+  width: 80%;
+  text-align:center;
+  margin: auto;
+  
 }

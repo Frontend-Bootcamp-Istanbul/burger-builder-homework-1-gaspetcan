@@ -25,9 +25,18 @@ class App extends React.Component {
     }
 
     malzemeCikar(malzeme){
+        // Cikarılması gereken malzemeyi alalım.
+        const selectedMalzeme = this.state.ingredients.find((ingredient) => {
+           return ingredient.name === malzeme.name;
+        });
+
+        // Elimizde olan ilk malzemenin displayId alalım
+        const targetId = selectedMalzeme.displayId;
+
+        // Display Id üzerinden bu malzemeyi silelim.
         this.setState({
             ingredients: this.state.ingredients.filter((ingredient) => {
-                return ingredient.displayId !== malzeme.displayId
+                return ingredient.displayId !== targetId;
             })
         })
     }
@@ -36,11 +45,12 @@ class App extends React.Component {
         return (
             <div>
                 <Hamburger ingredients={this.state.ingredients} />
-                <TotalPrice />
                 <ItemList items={ingrediends}
                           malzemeEkle={this.malzemeEkle}
                           malzemeCikar={this.malzemeCikar}
+                          selectedIngredients={this.state.ingredients}
                 />
+                <TotalPrice selectedIngredients={this.state.ingredients}/>
             </div>
         );
     }
